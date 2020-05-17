@@ -1,0 +1,498 @@
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+class SerVivo{
+    public:
+    virtual void respiro()=0;
+    virtual void meAlimento()=0;
+    virtual void habito()=0;
+    virtual void meReproduzco()=0;
+    virtual void meDesplazo()=0;
+};
+//-----------------------------------------------------------------------------------------------------------------------------------
+class Ave: virtual public SerVivo{
+    protected:
+        const int alas = 2;
+        const int patas = 2;
+        const bool pico = true;
+        const string tipoPiel = "plumas";
+        bool terrestre;
+        bool acuatico;
+        bool aereo;
+        const bool poneHuevos=true;
+        const bool nariz = true;
+        string habitat;
+        string tipoAlimentacion;
+        string alimento;
+    public:
+        Ave(){}
+        /*Ave(bool tierra,bool agua,bool aire, string dondeVive, string dieta, string queCome){
+            terrestre=tierra;
+            acuatico=agua;
+            aereo = aire;
+            habitat=dondeVive;
+            tipoAlimentacion=dieta;
+            alimento=queCome;
+        }*/
+        Ave(bool tierra,bool agua,bool aire, string dondeVive, string dieta, string queCome):terrestre(tierra),acuatico(agua),aereo(aire),habitat(dondeVive),tipoAlimentacion(dieta),alimento(queCome){}
+        void respiro(){}
+        void meAlimento(){}
+        void habito(){}
+        void meReproduzco(){}
+        void meDesplazo(){}
+
+        string definirQueSoy(){
+            string soy="";
+            if(terrestre){
+                soy=soy+" Terrestre, ";
+            }
+            if(acuatico){
+                soy=soy+" Acuatico,";
+            }
+            if(aereo){
+                soy=soy+" Aereo,";
+            }
+            return soy;
+        }
+};
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+class Mamifero: virtual public SerVivo{
+protected:
+    int alas;
+    int patas;
+    bool pico;
+    bool boca;
+    string tipoPiel = "";
+    bool terrestre;
+    bool acuatico;
+    bool aereo;
+    bool poneHuevos;
+    const bool nariz = true;
+    string habitat;
+    string tipoAlimentacion;
+    string alimento;
+public:
+    Mamifero(){}
+    Mamifero(int wing, int legs, bool beak, bool mouth, string skin, bool tierra,bool agua,bool aire, bool eggs, string dondeVive, string dieta, string queCome):alas(wing),patas(legs),pico (beak),boca(mouth),tipoPiel(skin),terrestre(tierra),acuatico(agua),aereo  (aire),poneHuevos(eggs),habitat(dondeVive),tipoAlimentacion(dieta),alimento(queCome){}
+    void respiro(){}
+    void meAlimento(){}
+    void habito(){}
+    void meReproduzco(){}
+    void meDesplazo(){}
+
+    string definirQueSoy(){
+        string soy="";
+        if(terrestre){
+            soy=soy+" Terrestre, ";
+        }
+        if(acuatico){
+            soy=soy+" Acuatico,";
+        }
+        if(aereo){
+            soy=soy+" Aereo,";
+        }
+        return soy;
+    }
+};
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+class Reptil: virtual public SerVivo{
+protected:
+    int patas;
+    bool boca;
+    const string tipoPiel = "Escamas";
+    bool terrestre;
+    bool acuatico;
+    const bool poneHuevos = true;
+    const bool nariz = true;
+    string habitat;
+    string tipoAlimentacion;
+    string alimento;
+    bool venenoso;
+public:
+    Reptil(){}
+    Reptil(int legs, bool mouth, bool tierra,bool agua, string dondeVive, string dieta, string queCome, bool poison):patas(legs),boca(mouth), terrestre(tierra),acuatico(agua), habitat(dondeVive), tipoAlimentacion(dieta), alimento(queCome),venenoso(poison){}
+    void respiro(){}
+    void meAlimento(){}
+    void habito(){}
+    void meReproduzco(){}
+    void meDesplazo(){}
+
+    string definirQueSoy(){
+        string soy="";
+        if(terrestre){
+            soy=soy+" Terrestre, ";
+        }
+        if(acuatico){
+            soy=soy+" Acuatico,";
+        }
+
+        return soy;
+    }
+    void veneno(){
+        string veneno="";
+        if(venenoso){
+            veneno = "Soy venenoso";
+        }else{
+            veneno = "No soy venenoso.";
+        }
+        cout<<veneno<<endl;
+    }
+};
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+class Anfibio: virtual public SerVivo{
+protected:
+    const int patas = 4;
+    bool boca;
+    const string tipoPiel = "Escamas";
+    bool terrestre;
+    bool acuatico;
+    const bool poneHuevos = true;
+    const bool nariz = true;
+    string habitat;
+    string tipoAlimentacion;
+    string alimento;
+    bool venenoso;
+public:
+    Anfibio(){}
+    Anfibio(bool mouth, bool tierra,bool agua, string dondeVive, string dieta, string queCome, bool poison):boca(mouth), terrestre(tierra),acuatico(agua), habitat(dondeVive), tipoAlimentacion(dieta), alimento(queCome),venenoso(poison){}
+    void respiro(){}
+    void meAlimento(){}
+    void habito(){}
+    void meReproduzco(){}
+    void meDesplazo(){}
+
+    string definirQueSoy(){
+        string soy="";
+        if(terrestre){
+            soy=soy+" Terrestre, ";
+        }
+        if(acuatico){
+            soy=soy+" Acuatico,";
+        }
+        return soy;
+    }
+    void veneno(){
+        string veneno="";
+        if(venenoso){
+            veneno = "Soy venenoso";
+        }else{
+            veneno = "No soy venenoso.";
+        }
+        cout<<veneno<<endl;
+    }
+};
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+class Pez:virtual public SerVivo{
+protected:
+    const bool aletas = true;
+    bool boca;
+    const string tipoPiel = "Escamas";
+    const bool acuatico = true;
+    const bool poneHuevos = true;
+    bool nariz;
+    bool branquias;
+    string habitat;
+    string tipoAlimentacion;
+    string alimento;
+    bool venenoso;
+public:
+    Pez(){}
+    Pez(bool mouth,bool nose, bool branq,string dondeVive, string dieta, string queCome, bool poison):boca(mouth) ,nariz(nose), branquias(branq),habitat(dondeVive),tipoAlimentacion(dieta),alimento(queCome), venenoso(poison){}
+    void respiro(){}
+    void meAlimento(){}
+    void habito(){}
+    void meReproduzco(){}
+    void meDesplazo(){}
+
+    string definirQueSoy(){
+        string soy="";
+        if(acuatico){
+            soy=soy+" Acuatico,";
+        }
+        return soy;
+    }
+};
+//-----------------------------------------------------------------------------------------------------------------------------------
+class Insecto: virtual public SerVivo{
+protected:
+    int alas;
+    int patas;
+    bool boca;
+    bool pico;
+    const string tipoPiel = "Exoesqueleto";
+    bool terrestre;
+    bool aereo;
+    bool acuatico;
+    const bool poneHuevos = true;
+    const bool nariz = true;
+    string habitat;
+    string tipoAlimentacion;
+    string alimento;
+    bool venenoso;
+public:
+    Insecto(){}
+    Insecto(int wings,int legs,bool mouth,bool beak, bool tierra,bool agua,bool aire, string dondeVive, string dieta, string queCome, bool poison):alas(wings),patas(legs),boca(mouth),pico(beak),terrestre(tierra),acuatico(agua),aereo(aire), habitat(dondeVive),tipoAlimentacion(dieta), alimento(queCome), venenoso(poison){}
+    void respiro(){}
+    void meAlimento(){}
+    void habito(){}
+    void meReproduzco(){}
+    void meDesplazo(){}
+
+    string definirQueSoy(){
+        string soy="";
+        if(terrestre){
+            soy=soy+" Terrestre, ";
+        }
+        if(acuatico){
+            soy=soy+" Acuatico,";
+        }
+        if(aereo){
+            soy=soy+" Aereo,";
+        }
+        return soy;
+    }
+};
+//-----------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------CLASES HIJAS DE CADA ESPECIE---------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------
+class Avestruz : Ave{
+private:
+    int velocidad;
+    int tamano;
+public:
+    //Avestruz(int speed, int size,bool tierra,bool agua,bool aire, string dondeVive, string dieta, string queCome):velocidad(speed),tamaño(size),Ave( tierra, agua, aire,  dondeVive,  dieta,  queCome){}
+    Avestruz(int speed, int size,bool tierra,bool agua,bool aire, string dondeVive, string dieta, string queCome):Ave(tierra, agua, aire,  dondeVive,  dieta,  queCome),velocidad(speed),tamano(size){
+        //Ave( tierra, agua, aire,  dondeVive,  dieta,  queCome);
+        //velocidad = speed;
+        //tamano = size;
+    }
+    void respiro(){
+        cout<<"Respiro oxigeno de una forma mas eficaz que poseemos las aves."<<endl;
+    }
+    void meAlimento(){
+        cout<<"Los avestruces somos "<<tipoAlimentacion<<", comemos "<<alimento<<endl;
+    }
+    void habito(){
+        cout<<"Los avestruces habitamos "<<habitat<<", somos "<<definirQueSoy()<<endl;
+    }
+    void meReproduzco(){
+        cout<<"Los avestruces somos oviparos"<<endl;
+    }
+    void meDesplazo(){
+        cout<<"Los avestruces somos no voladores y corremos a una velocidad de "<<velocidad<<"km/h."<<endl;
+    }
+    void informacion(){
+        cout<<"Soy un avestruz, tengo "<<patas<<" patas, "<<alas<<" alas, "<<"tipo de piel : "<<tipoPiel<<", mido "<<tamano<<" mts"<<endl;
+        respiro();
+        meAlimento();
+        habito();
+        meReproduzco();
+        meDesplazo();
+    }
+    string definirQueSoy(){
+        string soy="";
+        if(terrestre == true){
+            soy=soy+" Terrestre, ";
+        }
+        if(acuatico ==true){
+            soy=soy+" Acuatico,";
+        }
+        if(aereo== true){
+            soy=soy+" Aereo,";
+        }
+        return soy;
+    }
+};
+//-----------------------------------------------------------------------------------------------------------------------------------
+class Leon : Mamifero{
+private:
+    string color;
+    int peso;
+public:
+    Leon(string colors, int kg,int wing, int legs, bool beak, bool mouth, string skin, bool tierra,bool agua,bool aire, bool eggs, string dondeVive, string dieta, string queCome):Mamifero( wing,  legs,  beak,  mouth,  skin,  tierra, agua, aire,  eggs,  dondeVive,  dieta,  queCome),color(colors),peso(kg){}
+    void respiro(){
+        cout<<"Respiro oxigeno que se encuentra en el ambiente."<<endl;
+    }
+    void meAlimento(){
+        cout<<"Los leones somos "<<tipoAlimentacion<<", comemos "<<alimento<<endl;
+    }
+    void habito(){
+        cout<<"Los leones habitamos "<<habitat<<", somos "<<definirQueSoy()<<endl;
+    }
+    void meReproduzco(){
+        cout<<"los leones nos reproducimos por apareamiento y gestacion en el vientre durante varios meses"<<endl;
+    }
+    void meDesplazo(){
+        cout<<"los leones caminamos. "<<endl;
+    }
+
+    void informacion(){
+        cout<<"Soy un leon, tengo "<<patas<<" patas, "<<alas<<" alas, "<<"tipo de piel : "<<tipoPiel<<", soy de color "<<color<<", peso "<<peso<<" kg."<<endl;
+        respiro();
+        meAlimento();
+        habito();
+        meReproduzco();
+        meDesplazo();
+    }
+
+
+
+};
+//-----------------------------------------------------------------------------------------------------------------------------------
+class Serpiente : Reptil{
+private:
+    string color;
+    int longitud;
+public:
+    Serpiente(string colors, int longi, int legs, bool mouth, bool tierra,bool agua, string dondeVive, string dieta, string queCome, bool poison):Reptil(  legs,  mouth,  tierra, agua,  dondeVive,  dieta,  queCome,  poison),color(colors),longitud(longi){}
+    void respiro(){
+        cout<<"Respiro oxigeno que se encuentra en el ambiente."<<endl;
+    }
+    void meAlimento(){
+        cout<<"Las serpientes somos "<<tipoAlimentacion<<", comemos "<<alimento<<endl;
+    }
+    void habito(){
+        cout<<"Las serpientes habitamos "<<habitat<<", somos "<<definirQueSoy()<<endl;
+    }
+    void meReproduzco(){
+        cout<<"las serpientes nos reproducimos por medio de huevos."<<endl;
+    }
+    void meDesplazo(){
+        cout<<"Las serpientes nos arrastramos."<<endl;
+    }
+
+    void informacion(){
+        cout<<"Soy una serpiente, tengo "<<patas<<" patas, "<<"tipo de piel : "<<tipoPiel<<", soy de color "<<color<<", mido "<<longitud<<" cms."<<endl;
+        respiro();
+        meAlimento();
+        habito();
+        meReproduzco();
+        meDesplazo();
+        veneno();
+    }
+};
+//-----------------------------------------------------------------------------------------------------------------------------------
+class Rana : Anfibio{
+private:
+    string texturaPiel;
+public:
+    Rana(string textura,bool mouth, bool tierra,bool agua, string dondeVive, string dieta, string queCome, bool poison):Anfibio(  mouth,  tierra, agua,  dondeVive,  dieta,  queCome,  poison),texturaPiel(textura){}
+    void respiro(){
+        cout<<"Respiro oxigeno que se encuentra en el ambiente."<<endl;
+    }
+    void meAlimento(){
+        cout<<"Las ranas somos "<<tipoAlimentacion<<", comemos "<<alimento<<endl;
+    }
+    void habito(){
+        cout<<"Las ranas habitamos "<<habitat<<", somos "<<definirQueSoy()<<endl;
+    }
+    void meReproduzco(){
+        cout<<"las ranas nos reproducimos por medio de huevos."<<endl;
+    }
+    void meDesplazo(){
+        cout<<"Las ranas nos desplazamos saltando y nadando."<<endl;
+    }
+
+    void informacion(){
+        cout<<"Soy una rana, tengo tipo de piel : "<<tipoPiel<<" de textura "<<texturaPiel<<endl;
+        respiro();
+        meAlimento();
+        habito();
+        meReproduzco();
+        meDesplazo();
+        veneno();
+    }
+};
+//-----------------------------------------------------------------------------------------------------------------------------------
+class Trucha : Pez{
+private:
+    string color;
+public:
+    Trucha(string colors,bool mouth,bool nose, bool branq,string dondeVive, string dieta, string queCome, bool poison):Pez(mouth,nose, branq,dondeVive,dieta, queCome,poison),color(colors){}
+    void respiro(){
+        cout<<"Respiro por medio de branquias el oxigeno que se encuentra unido con particulas de agua."<<endl;
+    }
+    void meAlimento(){
+        cout<<"Las truchas somos "<<tipoAlimentacion<<", comemos "<<alimento<<endl;
+    }
+    void habito(){
+        cout<<"Las truchas habitamos "<<habitat<<", somos "<<definirQueSoy()<<endl;
+    }
+    void meReproduzco(){
+        cout<<"las truchas nos reproducimos por medio de huevos."<<endl;
+    }
+    void meDesplazo(){
+        cout<<"Las truchas nos desplazamos nadando."<<endl;
+    }
+
+    void informacion(){
+        cout<<"Soy una trucha, tengo tipo de piel : "<<tipoPiel<<" de color "<<color<<endl;
+        respiro();
+        meAlimento();
+        habito();
+        meReproduzco();
+        meDesplazo();
+    }
+};
+//-----------------------------------------------------------------------------------------------------------------------------------
+class Mosca : Insecto{
+private:
+    int ojos;
+public:
+    Mosca(int eyes, int wings,int legs,bool mouth,bool beak, bool tierra,bool agua,bool aire, string dondeVive, string dieta, string queCome, bool poison):Insecto( wings, legs, mouth, beak,  tierra, agua, aire,  dondeVive,  dieta,  queCome, poison),ojos(eyes){}
+    void respiro(){
+        cout<<"Respiro por medio de el oxigeno que hay en el ambiente."<<endl;
+    }
+    void meAlimento(){
+        cout<<"Las moscas somos "<<tipoAlimentacion<<", comemos "<<alimento<<endl;
+    }
+    void habito(){
+        cout<<"Las moscas habitamos "<<habitat<<", somos "<<definirQueSoy()<<endl;
+    }
+    void meReproduzco(){
+        cout<<"las moscas nos reproducimos por medio de huevos."<<endl;
+    }
+    void meDesplazo(){
+        cout<<"Las moscas nos desplazamos volando."<<endl;
+    }
+
+    void informacion(){
+        cout<<"Soy una mosca, tengo tipo de piel : "<<tipoPiel<<", tengo "<<ojos<<" ojos."<<endl;
+        respiro();
+        meAlimento();
+        habito();
+        meReproduzco();
+        meDesplazo();
+    }
+};
+//-----------------------------------------------------------------------------------------------------------------------------------
+int main(){
+    int opcion;
+    do {
+        cout<<"¡Bienvenido al creador de seres vivos!"<<endl;
+        cout<<"0. SALIR."<<endl;
+        cout<<"1. Crear un Ave."<<endl;
+        cout<<"2. Crear un Mamifero."<<endl;
+        cout<<"3. Crear Reptil."<<endl;
+        cout<<"4. Crear un Anfibio."<<endl;
+        cout<<"5. Crear un Pez."<<endl;
+        cout<<"6. Crear un Insecto."<<endl;
+        cin>>opcion;
+        switch (opcion) {
+        case 1:{Avestruz avestruz = Avestruz(60,2,true,false,false,"zonas deserticas o llanuras","omnivoros","principalmente semillas");avestruz.informacion();break;}
+        case 2:{Leon leon = Leon("dorado",315,0,4,false,true,"pelaje",true,false,false,false,"llanuras","carnivoro","animales");leon.informacion();break;}
+        case 3:{Serpiente serpiente = Serpiente("verde",200,0,true,true,true,"todos los ecosistemas","carnivora","insectos, mamíferos, peces y/o aves",true);serpiente.informacion();break;}
+        case 4:{Rana rana = Rana("lisa",true,true,true,"todos los ecosistemas","carnivoras","insectos",true);rana.informacion();break;}
+        case 5:{Trucha trucha = Trucha("arcoiris",true,false,true,"rios","carnivora","insectos",false);trucha.informacion();break;}
+        case 6:{Mosca mosca = Mosca(2000,2,4,false,true,false,false,true,"todos los ecosistemas","omnivoras","material en descomposicion",false);mosca.informacion();break;}
+        }
+    } while (opcion!= 0);
+}
